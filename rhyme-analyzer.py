@@ -1,7 +1,6 @@
 import pronouncing
 
 
-
 def count_syllables(word):
 
     phonemes = pronouncing.phones_for_word(word)
@@ -51,6 +50,15 @@ def count_missed_syllables(word):
         
     return total
 
+def get_rhyming_part(word):
+    phonemes = pronouncing.phones_for_word(word)
+    if not phonemes:
+        print("Phonemes not found for slang word")
+        return None
+    else:
+        return pronouncing.rhyming_part(phonemes[0])
+
+
 
 
 if __name__ == "__main__":
@@ -63,4 +71,9 @@ if __name__ == "__main__":
     print(count_missed_syllables("like"))     # expect 1 (silent e)
     print(count_missed_syllables("tryna"))    # your real target word
     print(count_missed_syllables("flowin"))   # your real target word
-    print(count_missed_syllables("the"))      # expect 1 (edge case we discussed)
+    print(count_missed_syllables("the"))      # expect 1 (edge case)
+    print(get_rhyming_part("cat"))
+    print(get_rhyming_part("hat"))
+    print(get_rhyming_part("hello"))
+    print(get_rhyming_part("flow"))
+    print(get_rhyming_part("tryna"))
