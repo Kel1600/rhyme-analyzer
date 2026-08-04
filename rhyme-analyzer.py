@@ -56,23 +56,25 @@ def count_missed_syllables(word):
 def get_rhyming_part(word):
     phonemes = pronouncing.phones_for_word(word)
     if not phonemes:
-        print("Phonemes not found for slang word.")
-        return None
+        # print("Phonemes not found for slang word.")
+        # return None
+        return word
     else:
         return pronouncing.rhyming_part(phonemes[0])
     
 # Determines if two words rhyme by returning true or false
 def words_rhyme(word1, word2):
-    rhyme1, rhyme2 = get_rhyming_part(word1), get_rhyming_part(word2)
+    return get_rhyming_part(word1) == get_rhyming_part(word2)
+    # rhyme1, rhyme2 = get_rhyming_part(word1), get_rhyming_part(word2)
 
-    if rhyme1 and rhyme2:
-        if rhyme1 == rhyme2:
-            return True
-    else:
-        print("One or both of the words not available in CMU dictionary.")
-        return None
+    # if rhyme1 and rhyme2:
+    #     if rhyme1 == rhyme2:
+    #         return True
+    # else:
+    #     print("One or both of the words not available in CMU dictionary.")
+    #     return None
 
-    return False
+    # return False
 
 def rhyme_pattern(lines):
 
@@ -122,3 +124,10 @@ if __name__ == "__main__":
         "wearing a hat",
     ]
     print(rhyme_pattern(test))
+    test2 = [
+        "I saw a cat",
+        "just stay tryna",
+        "sitting on a mat",
+        "gotta stay finna",
+    ]
+    print(rhyme_pattern(test2))
