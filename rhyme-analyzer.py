@@ -1,4 +1,5 @@
 import pronouncing
+import string
 
 # Counts the number syllables in each word
 def count_syllables(word):
@@ -73,14 +74,33 @@ def words_rhyme(word1, word2):
 
     return False
 
+def rhyme_pattern(lines):
+
+    memoryBank = {}
+    pattern = []
+    counter = 0
+    
+    for line in lines:
+        line = line.lower()
+        lastWord = line.split(" ")[-1].strip(",.!?\"'()")
+        rhyme = get_rhyming_part(lastWord)
+        if rhyme in memoryBank:
+            pattern.append(memoryBank[rhyme])
+        else:
+            memoryBank[rhyme] = string.ascii_uppercase[counter]
+            pattern.append(memoryBank[rhyme])
+            counter += 1
+        
+    return pattern
+        
 
 
 
 if __name__ == "__main__":
-    # print(count_syllables("hello"))
-    # print(count_syllables("cat"))
-    # print(count_syllables("tryna"))
-    # print(count_line_syllables("I'm tryna vibe but the rhythm keeps flowin"))
+    print(count_syllables("hello"))
+    print(count_syllables("cat"))
+    print(count_syllables("tryna"))
+    print(count_line_syllables("I'm tryna vibe but the rhythm keeps flowin"))
     # print(count_missed_syllables("cat"))      # expect 1
     # print(count_missed_syllables("idea"))     # expect 2
     # print(count_missed_syllables("like"))     # expect 1 (silent e)
@@ -95,3 +115,10 @@ if __name__ == "__main__":
     print(words_rhyme("cat", "hat"))
     print(words_rhyme("cat", "dog"))
     print(words_rhyme("tryna", "hat"))
+    test = [
+        "I saw a cat",
+        "sitting on a mat",
+        "next to a dog",
+        "wearing a hat",
+    ]
+    print(rhyme_pattern(test))
