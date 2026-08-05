@@ -4,6 +4,9 @@ import string
 # Counts the number syllables in each word
 def count_syllables(word):
 
+    if not isinstance(word, str):
+        raise TypeError("Word must be a string.")
+
     phonemes = pronouncing.phones_for_word(word)
     syllables = 0
 
@@ -99,10 +102,13 @@ def rhyme_pattern(lines):
 
 
 if __name__ == "__main__":
-    print(count_syllables("hello"))
-    print(count_syllables("cat"))
-    print(count_syllables("tryna"))
-    print(count_line_syllables("I'm tryna vibe but the rhythm keeps flowin"))
+    print()
+    print(count_syllables(""))
+    print(count_syllables(None))
+    # print(count_syllables("hello"))
+    # print(count_syllables("cat"))
+    # print(count_syllables("tryna"))
+    # print(count_line_syllables("I'm tryna vibe but the rhythm keeps flowin"))
     # print(count_missed_syllables("cat"))      # expect 1
     # print(count_missed_syllables("idea"))     # expect 2
     # print(count_missed_syllables("like"))     # expect 1 (silent e)
@@ -114,20 +120,20 @@ if __name__ == "__main__":
     # print(get_rhyming_part("hello"))
     # print(get_rhyming_part("flow"))
     # print(get_rhyming_part("tryna"))
-    print(words_rhyme("cat", "hat"))
-    print(words_rhyme("cat", "dog"))
-    print(words_rhyme("tryna", "hat"))
-    test = [
-        "I saw a cat",
-        "sitting on a mat",
-        "next to a dog",
-        "wearing a hat",
-    ]
-    print(rhyme_pattern(test))
-    test2 = [
-        "I saw a cat",
-        "just stay tryna",
-        "sitting on a mat",
-        "gotta stay finna",
-    ]
-    print(rhyme_pattern(test2))
+    # print(words_rhyme("cat", "hat"))
+    # print(words_rhyme("cat", "dog"))
+    # print(words_rhyme("tryna", "hat"))
+    # test = [
+    #     "I saw a cat",
+    #     "sitting on a mat",
+    #     "next to a dog",
+    #     "wearing a hat",
+    # ]
+    # print(rhyme_pattern(test))
+    # test2 = [
+    #     "I saw a cat",
+    #     "just stay tryna",
+    #     "sitting on a mat",
+    #     "gotta stay finna",
+    # ]
+    # print(rhyme_pattern(test2))
