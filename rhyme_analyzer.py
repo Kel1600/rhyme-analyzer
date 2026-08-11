@@ -11,9 +11,7 @@ def count_syllables(word):
     syllables = 0
 
     if not phonemes:
-        # print("Slang word detected.")
         syllables = count_missed_syllables(word)
-        # return None
     else:
        first_pronunc = phonemes[0].split(" ")
        syllables = sum(1 for phoneme in first_pronunc if phoneme[-1].isdigit())
@@ -25,16 +23,10 @@ def count_line_syllables(line):
     line = line.lower()
     words = line.split(" ")
     total = 0
-    # missedWords = []
     
     for word in words:
         cleanWord = word.strip(",.!?\"'()")
         total += count_syllables(cleanWord)
-        # curr = count_syllables(cleanWord)
-        # if curr is None:
-        #     missedWords.append(cleanWord)
-        # else:
-        #     total += curr
     
     return total
 
@@ -62,8 +54,6 @@ def get_rhyming_part(word):
 
     phonemes = pronouncing.phones_for_word(word)
     if not phonemes:
-        # print("Phonemes not found for slang word.")
-        # return None
         return word
     else:
         return pronouncing.rhyming_part(phonemes[0])
@@ -73,25 +63,12 @@ def words_rhyme(word1, word2):
     if not isinstance(word1, str) or not isinstance(word2, str):
         raise TypeError("Both words must be strings to be compared")
     return get_rhyming_part(word1) == get_rhyming_part(word2)
-    # rhyme1, rhyme2 = get_rhyming_part(word1), get_rhyming_part(word2)
 
-    # if rhyme1 and rhyme2:
-    #     if rhyme1 == rhyme2:
-    #         return True
-    # else:
-    #     print("One or both of the words not available in CMU dictionary.")
-    #     return None
-
-    # return False
-
+# Returns the rhyme pattern of the list of lines given
 def rhyme_pattern(lines):
 
     if not isinstance(lines, list):
         raise TypeError("Input is not a list of lines.")
-    
-    # for line in lines:
-    #     if not isinstance(line, str):
-    #         raise TypeError("The list needs to contain strings only.")
 
     memoryBank = {}
     pattern = []
