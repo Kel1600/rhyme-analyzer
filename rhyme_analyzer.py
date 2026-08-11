@@ -119,35 +119,3 @@ if __name__ == "__main__":
     print()
     print(count_syllables(""))
     print(count_syllables(None))
-    # print(count_syllables("hello"))
-    # print(count_syllables("cat"))
-    # print(count_syllables("tryna"))
-    # print(count_line_syllables("I'm tryna vibe but the rhythm keeps flowin"))
-    # print(count_missed_syllables("cat"))      # expect 1
-    # print(count_missed_syllables("idea"))     # expect 2
-    # print(count_missed_syllables("like"))     # expect 1 (silent e)
-    # print(count_missed_syllables("tryna"))    # your real target word
-    # print(count_missed_syllables("flowin"))   # your real target word
-    # print(count_missed_syllables("the"))      # expect 1 (edge case)
-    # print(get_rhyming_part("cat"))
-    # print(get_rhyming_part("hat"))
-    # print(get_rhyming_part("hello"))
-    # print(get_rhyming_part("flow"))
-    # print(get_rhyming_part("tryna"))
-    # print(words_rhyme("cat", "hat"))
-    # print(words_rhyme("cat", "dog"))
-    # print(words_rhyme("tryna", "hat"))
-    # test = [
-    #     "I saw a cat",
-    #     "sitting on a mat",
-    #     "next to a dog",
-    #     "wearing a hat",
-    # ]
-    # print(rhyme_pattern(test))
-    # test2 = [
-    #     "I saw a cat",
-    #     "just stay tryna",
-    #     "sitting on a mat",
-    #     "gotta stay finna",
-    # ]
-    # print(rhyme_pattern(test2))
