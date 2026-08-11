@@ -57,6 +57,9 @@ def count_missed_syllables(word):
 
 # Gets the rhyming part of a word
 def get_rhyming_part(word):
+    if not isinstance(word, str):
+        raise TypeError("Word must be a string")
+
     phonemes = pronouncing.phones_for_word(word)
     if not phonemes:
         # print("Phonemes not found for slang word.")
@@ -67,6 +70,8 @@ def get_rhyming_part(word):
     
 # Determines if two words rhyme by returning true or false
 def words_rhyme(word1, word2):
+    if not isinstance(word1, str) or not isinstance(word2, str):
+        raise TypeError("Both words must be strings to be compared")
     return get_rhyming_part(word1) == get_rhyming_part(word2)
     # rhyme1, rhyme2 = get_rhyming_part(word1), get_rhyming_part(word2)
 
@@ -81,11 +86,20 @@ def words_rhyme(word1, word2):
 
 def rhyme_pattern(lines):
 
+    if not isinstance(lines, list):
+        raise TypeError("Input is not a list of lines.")
+    
+    # for line in lines:
+    #     if not isinstance(line, str):
+    #         raise TypeError("The list needs to contain strings only.")
+
     memoryBank = {}
     pattern = []
     counter = 0
     
     for line in lines:
+        if not isinstance(line, str):
+            raise TypeError("The list needs to contain strings only.")
         line = line.lower()
         lastWord = line.split(" ")[-1].strip(",.!?\"'()")
         rhyme = get_rhyming_part(lastWord)
