@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Rhyme Analyzer</title>
 </head>
 <body>
     <h1> Rhyme Analyzer</h1>
     <form method="POST">
-        <textarea name="lyrics" rows="8" cols="50" placeholder="Paste lyrics here, one bar per line"></textarea>
+        <textarea name="lyrics" rows="8" cols="50" placeholder="Paste lyrics here, one bar per line">
+        {%- if lines -%}
+            {{ lines|join("\n")}}
+        {%- endif -%}
+        </textarea>
         <br>
         <button type="submit">Analyze</button>
     </form>
     {% if pattern %}
         <h2>Rhyme Pattern</h2>
-        <p> {{ pattern }}</p>
+        <p> {{ pattern|join(", ") }}</p>
 
         <h2>Syllable Counts</h2>
         <ul>
